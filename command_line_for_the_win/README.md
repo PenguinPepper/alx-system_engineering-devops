@@ -1,1 +1,1 @@
-rectpory contaims files fpr the Cpommand line for the ein ecercoisei.
+Directory contains files for the Command line for the win exercise.
