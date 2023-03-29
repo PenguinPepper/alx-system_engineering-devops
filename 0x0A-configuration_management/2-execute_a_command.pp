@@ -1,4 +1,5 @@
 # file will kill a process called killmenow
 exec {'pkill killmenow':
-onlyif => 'pgrep killmenow',
+command => 'pkill killmenow',
+onlyif  => 'pgrep killmenow',
 }
