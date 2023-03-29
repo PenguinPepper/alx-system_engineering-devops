@@ -4,7 +4,8 @@ $line_string = "Host *
 	IdentityFile ~/.ssh/school
 	PasswordAuthentication no"
 
-file { '~/.ssh/config':
+file { '/etc/ssh/ssh_config':
 ensure  => present,
+path    => '/etc/ssh/ssh_config',
 content => $line_string,
 }
