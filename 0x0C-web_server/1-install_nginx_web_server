@@ -3,4 +3,5 @@
 sudo apt-get update
 sudo apt-get -y install nginx
 inside_text="<!DOCTYPE html><html><body><h1>Hello World!</h1></body></html>"
-echo "${inside_text}" | sudo tee ~/var/www/html/index.html
+echo "${inside_text}" | sudo tee /var/www/html/index.html
+service nginx start
