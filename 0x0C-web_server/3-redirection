@@ -4,7 +4,7 @@ sudo apt-get update
 sudo apt -y install nginx
 inside_text="<!DOCTYPE html><html><body><h1>Hello World!</h1></body></html>"
 echo "${inside_text}" | sudo tee /var/www/html/index.html
-redirect="location /redirect_me {\nreturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}"
+redirect="location /redirect_me {\nreturn 301;\n}"
 line_no=56
 sudo sed -i "${line_no}s/^$/$redirect/" /etc/nginx/sites-available/default
-service nginx start
+nginx -s reload
