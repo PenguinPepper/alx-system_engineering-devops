@@ -2,5 +2,5 @@
 # script that configures a new Ubuntu machines Nginx server redirection
 redirect="location /redirect_me {\nreturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}"
 line_no=56
-sudo sed -i "${line_no}s/^$/$redirect/" /etc/nginx//sites-available/default
+sudo sed -i "${line_no}s/^$/$redirect/" /etc/nginx/sites-available/default
 service nginx start
