@@ -6,5 +6,5 @@ inside_text="<!DOCTYPE html><html><body><h1>Hello World!</h1></body></html>"
 echo "${inside_text}" | sudo tee /var/www/html/index.html
 redirect="location /redirect_me {\nreturn 301;\n}"
 line_no=56
-sudo sed -i "s/${line_no}/^$/$redirect/" /etc/nginx/sites-available/default
+sudo sed -i "s/${line_no}/$redirect/" /etc/nginx/sites-available/default
 service nginx reload
