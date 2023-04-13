@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# script that runs Apache on a container and returns a home page
+service apache2 start
