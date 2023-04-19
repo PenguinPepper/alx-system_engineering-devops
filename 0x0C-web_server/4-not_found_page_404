@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# script that configures a new Ubuntu machines Nginx server to have a custom 404 page
+
+# install nginx 
+sudo apt-get update
+sudo apt-get -y install nginx
+inside_text="<!DOCTYPE html><html><body><h1>Hello World!</h1></body></html>"
+echo "${inside_text}" | sudo tee /var/www/html/index.html
+
+# add custom redirect
+redirect="server_name _;\n	location \/redirect_me\/ {\n	return 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n	}"
+replace="server_name _;"
+sudo sed -i "s/$replace/$redirect/" /etc/nginx/sites-available/default
+
+# add 404 page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/error_page.html
+replg="try_files \$uri \$uri\/ =404;"
+errorv="$replg\n	}\n	error_page 404 \/error_page;\n	location \/error_page\/ {\n	internal;\n"
+sudo sed -i  "s/$replg/$errorv/" /etc/nginx/sites-available/default
+service nginx start
