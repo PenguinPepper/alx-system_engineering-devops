@@ -15,6 +15,6 @@ sudo sed -i "s/$replace/$redirect/" /etc/nginx/sites-available/default
 # add 404 page
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/error_page.html
 replg="try_files \$uri \$uri\/ =404;"
-errorv="$replg\n	}\n	error_page 404 \/error_page;\n	location \/error_page\/ {\n	internal;\n"
+errorv="$replg\n	}\n	error_page 404 \/error_page;\n	location \/error_page\/ {\n	internal;"
 sudo sed -i  "s/$replg/$errorv/" /etc/nginx/sites-available/default
 service nginx start
