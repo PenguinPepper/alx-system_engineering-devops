@@ -16,10 +16,6 @@ content => 'Hello World!',
 
 exec { 'redirect me':
 group   => 'root',
-command => 'sed -i "47s/^$/$replace"',
+command => 'sed -i "47s/^$/$replace/" /etc/nginx/sites-available/default',
 path    => '/etc/nginx/sites-available/default',
-}
-
-package { 'nginx':
-ensure => restart,
 }
