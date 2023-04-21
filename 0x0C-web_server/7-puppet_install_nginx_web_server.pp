@@ -24,5 +24,4 @@ exec { 'redirect me':
 group   => 'root',
 command => 'sed -i "47s/^$/$replace/" /etc/nginx/sites-available/default',
 path    => '/etc/nginx/sites-available/default',
-notify  => Service['nginx'],
 }
