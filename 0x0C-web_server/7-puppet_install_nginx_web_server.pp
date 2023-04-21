@@ -1,12 +1,12 @@
 # script to configure nginx on new ubuntu machine
-
-$replace = "	location /redirect_me/ {
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-	}"
-
 package {'nginx':
 ensure => installed,
+provider => apt,
 }
+
+$replace = "    location /redirect_me/ {
+                return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+        }"
 
 file { '/var/www/html/index.html':
 ensure  => present,
