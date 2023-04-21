@@ -1,8 +1,12 @@
 # script to configure nginx on new ubuntu machine
 package {'nginx':
-ensure => installed,
-provider => 'apt',
-service_ensure => 'running',
+ensure => 'installed',
+}
+
+service {'nginx':
+ensure => 'running',
+enable => true,
+
 }
 
 $replace = "    location /redirect_me/ {
@@ -13,6 +17,7 @@ file { '/var/www/html/index.html':
 ensure  => present,
 path    => '/var/www/html/index.html',
 content => 'Hello World!',
+notify  => Service['nginx'],
 }
 
 exec { 'redirect me':
