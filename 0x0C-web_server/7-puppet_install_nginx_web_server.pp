@@ -6,7 +6,6 @@ ensure => 'installed',
 service {'nginx':
 ensure => 'running',
 enable => true,
-
 }
 
 $replace = "    location /redirect_me/ {
@@ -20,8 +19,10 @@ content => 'Hello World!',
 notify  => Service['nginx'],
 }
 
-exec { 'redirect me':
-group   => 'root',
-command => 'sed -i "47s/^$/$replace/" /etc/nginx/sites-available/default',
-path    => '/etc/nginx/sites-available/default',
+file_line { 'redirect_me':
+ensure => present,
+path   => '/etc/nginx/sites-available/default',
+after  => 'server_name _;',
+line   => $replace,
+notify => Service['nginx'],
 }
