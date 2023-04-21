@@ -1,7 +1,8 @@
 # script to configure nginx on new ubuntu machine
 package {'nginx':
 ensure => installed,
-provider => apt,
+provider => 'apt',
+service_ensure => 'running',
 }
 
 $replace = "    location /redirect_me/ {
