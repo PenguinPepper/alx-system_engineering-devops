@@ -9,17 +9,17 @@ ensure => installed,
 }
 
 file { '/var/www/html/index.html':
-ensure => present,
-path => '/var/www/html/index.html',
+ensure  => present,
+path    => '/var/www/html/index.html',
 content => 'Hello World!',
 }
 
 exec { 'redirect me':
-group => 'root',
+group   => 'root',
 command => 'sed -i "47s/^$/$replace"',
-path => '/etc/nginx/sites-available/default',
+path    => '/etc/nginx/sites-available/default',
 }
 
 package { 'nginx':
-ensure: restart,
+ensure => restart,
 }
