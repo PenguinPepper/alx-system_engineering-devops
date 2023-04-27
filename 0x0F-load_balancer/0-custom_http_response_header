@@ -1,4 +1,19 @@
 #!/usr/bin/env bash
+# script that configures a new Ubuntu machines Nginx server to have a custom 404 page
+sudo apt-get update
+sudo apt-get -y install nginx
+inside_text="<!DOCTYPE html><html><body><h1>Hello World!</h1></body></html>"
+echo "$inside_text" | sudo tee /var/www/html/index.html
+
+# redirect page and add custom error page
+redirect="server_name _;\n	location \/redirect_me\/ {\n	return 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n	}"
+replace="server_name _;"
+sudo sed -i "s/$replace/$redirect/" /etc/nginx/sites-available/default
+text="<!DOCTYPE html><html><body><h1>Ceci n'est pas une page</h1></body></html>"
+echo "$text" | sudo tee /var/www/html/error_page.html
+errorv="\n	error_page 404 \/error_page.html;\n	location \/error_page.html\/ \{\n		internal;\n	\}"
+sudo sed -i  "56s/^$/$errorv/" /etc/nginx/sites-available/default
+
 # script that adds a custom header to an Ubuntu machine with nginx
 new_header="\n  add_header X-Served-By \"\$hostname\";\n"
 sudo sed -i "24s/^$/$new_header/" /etc/nginx/sites-available/default
