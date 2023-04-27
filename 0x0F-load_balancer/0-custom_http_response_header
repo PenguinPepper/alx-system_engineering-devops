@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 # script that adds a custom header to an Ubuntu machine with nginx
-sudo apt-get update
-sudo apt-get -y install nginx
-new_header="\n	add_header X-Served-By \"\$hostname\";\n"
+new_header="\n  add_header X-Served-By \"\$hostname\";\n"
 sudo sed -i "24s/^$/$new_header/" /etc/nginx/sites-available/default
 sudo service nginx restart
