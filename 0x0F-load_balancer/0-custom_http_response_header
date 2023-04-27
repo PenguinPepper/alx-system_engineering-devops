@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# script that adds a custom header to an Ubuntu machine with nginx
+new_header="\n	add_header X-Server-By '/$hostname';\n"
+sudo sed -i "24s/^$/$new_header" /etc/nginx/sites-available/default
+sudo service nginx restart
