@@ -1,4 +1,4 @@
-#usr/bin/env bash
+#!/usr/bin/env bash
 # script that isntalls HAProxy on a new Ubuntu machine and cofiigures it
 sudo apt-get update
 sudo apt-get install --no-install-recommends software-properties-common
