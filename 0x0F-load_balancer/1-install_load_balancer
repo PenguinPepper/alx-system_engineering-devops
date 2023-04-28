@@ -1,0 +1,8 @@
+#usr/bin/env bash
+# script that isntalls HAProxy on a new Ubuntu machine and cofiigures it
+sudo apt-get update
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.0
+sudo apt install -y haproxy=2.0.\*
+
+echo "ENABLED=1" | sudo tee /etc/default/haproxy
