@@ -12,9 +12,10 @@ sudo sed -i "s/$replace/$redirect/" /etc/nginx/sites-available/default
 text="<!DOCTYPE html><html><body><h1>Ceci n'est pas une page</h1></body></html>"
 echo "$text" | sudo tee /var/www/html/error_page.html
 errorv="\n	error_page 404 \/error_page.html;\n	location \/error_page.html\/ \{\n		internal;\n	\}"
-sudo sed -i  "56s/^$/$errorv/" /etc/nginx/sites-available/default
+sudo sed -i  "52s/^$/$errorv/" /etc/nginx/sites-available/default
 
 # script that adds a custom header to an Ubuntu machine with nginx
 new_header="\n  add_header X-Served-By \"\$hostname\";\n"
-sudo sed -i "24s/^$/$new_header/" /etc/nginx/sites-available/default
+sudo sed -i "19s/^$/$new_header/" /etc/nginx/sites-available/default
+sudo nginx -t
 sudo service nginx restart
