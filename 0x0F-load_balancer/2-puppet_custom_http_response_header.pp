@@ -8,6 +8,25 @@ ensure => 'running',
 enable => true,
 }
 
+$replace = "    location /redirect_me/ {
+                return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+        }"
+
+file { '/var/www/html/index.html':
+ensure  => present,
+path    => '/var/www/html/index.html',
+content => 'Hello World!',
+notify  => Service['nginx'],
+}
+
+file_line { 'redirect_me':
+ensure => present,
+path   => '/etc/nginx/sites-available/default',
+after  => 'server_name _;',
+line   => $replace,
+notify => Service['nginx'],
+}
+1az`
 $header = "add_header X-Served-By '$hostname';"
 
 file_line {'add_header':
