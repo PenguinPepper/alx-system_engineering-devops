@@ -26,7 +26,7 @@ after  => 'server_name _;',
 line   => $replace,
 notify => Service['nginx'],
 }
-1az`
+
 $header = "add_header X-Served-By '$hostname';"
 
 file_line {'add_header':
