@@ -32,7 +32,7 @@ $header = "	add_header X-Served-By '\$hostname';"
 file_line {'add_header':
 ensure => present,
 path   => '/etc/nginx/sites-available/default',
-after  => 'listen [::]:80 default_server;',
+after  => '# include snippets/snakeoil.conf;',
 line   => $header,
 notify => Service['nginx'],
 }
