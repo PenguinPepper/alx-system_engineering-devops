@@ -27,7 +27,7 @@ line   => $replace,
 notify => Service['nginx'],
 }
 
-$header = "add_header X-Served-By '$hostname';"
+$header = "	add_header X-Served-By \'\$hostname\';"
 
 file_line {'add_header':
 ensure => present,
