@@ -8,7 +8,7 @@ ensure => 'running',
 enable => true,
 }
 
-$header = "	add_header X-Served-By '\$hostname';"
+$header = "	add_header X-Served-By \"\$hostname\";"
 
 file_line {'add_header':
 ensure => present,
