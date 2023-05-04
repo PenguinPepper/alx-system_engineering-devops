@@ -5,7 +5,7 @@ sudo apt-get install -y haproxy
 
 # enable initiation via script
 word='ENABLED=1'
-sed -i "5s/^$/$word/" /etc/default/haproxy
+sudo sed -i "5s/^$/$word/" /etc/default/haproxy
 
 # copy the configuration file and edit the copied version
 sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.orig
@@ -18,7 +18,7 @@ frontend www
 backend myservers
 	mode http
 	balance roundrobin
-	server server1 100.25.167.201:80 check
-	server server2 54.162.225.169:80 check"
+	server server1 54.197.44.128:80 check
+	server server2 54.87.207.208:80 check"
 sudo echo "${text2}" >> /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
