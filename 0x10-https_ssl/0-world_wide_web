@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# script that accepts two arguments and returns specif information abut its dns
+dig "$1"
