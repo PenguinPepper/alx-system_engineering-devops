@@ -4,4 +4,12 @@ pkill -HUP nginx
 text="# server_names_hash_bucket_size 64;"
 text2="server_names_hash_bucket_size 64;\n"
 sed -i "s/$text/$text2/" /etc/nginx/nginx.conf
+
+port8080="listen listen 8080 default_server;"
+right="listen 80 default_server;\n"
+sed -i "s/$port8080/$right/" /etc/nginx/sites-enabled/default
+
+second=" listen [::]:8080 default_server ipv6only=on;"
+correct=" listen [::]:80 default_server ipv6only=on;"
+sed -i "s/$second/$correct/" /etc/nginx/sites-enabled/default
 sudo service nginx start
