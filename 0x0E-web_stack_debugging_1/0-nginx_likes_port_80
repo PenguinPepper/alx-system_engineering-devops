@@ -3,5 +3,5 @@
 pkill -HUP nginx
 rm /usr/sbin/nginx
 rm /etc/nginx/sites-enabled/default
-ln -sf /etc/nginx/sites-available/default /etc/nignx/sites-enabled/default
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
