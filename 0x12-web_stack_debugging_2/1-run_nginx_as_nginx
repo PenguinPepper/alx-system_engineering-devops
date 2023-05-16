@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Script that runs as nginx usr
+echo "su nginx --c /usr/sbin/nginx" >> /etc/rc.local
