@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# script that runs as a privileged user,
-adduser $!
-usermod -aG sudo $1
+#script that runs as a privileged user.
 su $1
 whoami
