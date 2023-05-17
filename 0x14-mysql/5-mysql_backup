@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# script that generates a mysql dump and creates a compressed archive of it.
+mysqldump -c -A -u root --password[=$1] -r backup.sql | gzip > (date + \%d\%m\%Y).tar.gz
