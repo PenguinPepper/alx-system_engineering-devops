@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""This module contains the script to send a get request to a REST API"""
+"""This module contains the script to send a get request to a REST API
+
+The REST API used is jsonplaceholder.typicode.com
+"""
 
 
 if __name__ == "__main__":
