@@ -6,6 +6,7 @@ The REST API used is jsonplaceholder.typicode.com
 
 
 if __name__ == "__main__":
+    """Code should only run when called on by terminal"""
     import requests
     import sys
 
