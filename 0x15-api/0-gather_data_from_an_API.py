@@ -15,9 +15,14 @@ if __name__ == "__main__":
     req = requests.get(req_url + '/todos')
     name = 'https://jsonplaceholder.typicode.com/users/' + user_id
     name_req = requests.get(name)
-    res_name = name_req.json()
+    nme = name_req.json()
     res = req.json()
-    print(f'Employee {res_name.get("name")} is done with tasks(n/{len(res)}):')
+    todo = []
+    done = 0
     for i in res:
         if i.get("completed") is True:
-            print(f'\t {i.get("title")}')
+            todo.append(i.get("title"))
+            done += 1
+    print(f'Employee {nme.get("name")} is done with tasks({done}/{len(res)}):')
+    for i in todo:
+        print(f'\t {i}')
