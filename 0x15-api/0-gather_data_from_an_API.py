@@ -17,7 +17,7 @@ if __name__ == "__main__":
     name_req = requests.get(name)
     res_name = name_req.json()
     res = req.json()
-    print(f'Employee {res_name.get("name")} is done with tasks(n/20):')
+    print(f'Employee {res_name.get("name")} is done with tasks(n/{len(res)}):')
     for i in res:
         if i.get("completed") is True:
             print(f'\t {i.get("title")}')
