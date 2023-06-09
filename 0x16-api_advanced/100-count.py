@@ -6,12 +6,12 @@ Module contains the function that gets the number of subscrbers
 import requests
 
 
-def top_ten(subreddit):
+def count_words(subreddit, word_list):
     """
     Function that prints the titles of the
     first 10 hot posts listed for a given subreddit
     """
     if not subreddit:
-        print(None)
+        return None
     else:
-        return 1
+        return word_list
