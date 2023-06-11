@@ -2,6 +2,5 @@
 
 exec {'fix typo':
 command => 'sed -i "s/phpp/php/g" wp-settings.php',
-cwd     => 'var/www/html',
-shell   => true,
+path     => '/var/www/html',
 }
