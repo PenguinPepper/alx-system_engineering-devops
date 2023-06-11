@@ -1,5 +1,7 @@
 # script that fixes Apache2 error code 500
 
-package {'apache2':
-ensure => 'running',
+exec {'fix typo':
+command => 'sed -i "s/phpp/php/g" wp-settings.php',
+cwd     => 'var/www/html',
+shell   => true,
 }
