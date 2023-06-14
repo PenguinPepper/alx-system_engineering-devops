@@ -1,4 +1,4 @@
- # scrip that changes user limit
+# scrip that changes user limit
 
 $the_line = 'holberton hard nofile 5'
 
