@@ -1,9 +1,9 @@
-# scrip that changes user limit
+# script that comments out a line
 
 $the_line = 'holberton hard nofile 5'
+$next_line = '# holberton hard nofile 5'
 
-comment_line{'comment out a line':
-ensure => commented,
-path   => '/etc/security/limits.conf',
-match  => $the_line,
+exec {'comment out a line':
+command => 'sed -i s/$the_line/$next_line/ /etc/security/limits.conf',
+path    => ['/bin','/sbin','/usr/bin', '/usr/sbin'],
 }
